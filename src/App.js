@@ -49,7 +49,7 @@ function App() {
   const [stripeApiKey, setStripeApiKey] = useState("");
 
   async function getStripeApiKey() {
-    const { data } = await axios.get("https://lazy-cyan-hatchling-belt.cyclic.app/api/v1/stripeapikey");
+    const { data } = await axios.get("https://nice-jade-coyote-wear.cyclic.app/api/v1/stripeapikey");
     
     setStripeApiKey(data.stripeApiKey);
   };
@@ -60,8 +60,8 @@ function App() {
       families:["Roboto", "Droid Sans", "Chilanka"],
   },
   });
-      store.dispatch(loadUser());
-      getStripeApiKey();
+      //store.dispatch(loadUser());
+      //getStripeApiKey();
 
   } ,[])
   
@@ -79,7 +79,7 @@ function App() {
     <Route exact path="/contact" component={Contact} />
     <Route exact path="/about" component={About} />
     <Route exact path="/product/:id" component={ProductDetails} />
-    <Route exact path="https://lazy-cyan-hatchling-belt.cyclic.app/products" component={Products} />
+    <Route exact path="/products" component={Products} />
     <Route  path="/products/:keyword" component={Products} />
     <ProtectedRoute exact path="/account" component={Profile} />
     <ProtectedRoute exact path="/me/update" component={UpdateProfile} />

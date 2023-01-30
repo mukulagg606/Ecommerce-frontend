@@ -5,7 +5,7 @@ import axios from "axios";
 export const addItemsToCart = (id, quantity)=> async(dispatch, getState)=>{
     
          const {data} = await axios.get(
-            `/api/v1/product/${id}`);
+            `https://nice-jade-coyote-wear.cyclic.app/api/v1/product/${id}`);
 
         dispatch({type: ADD_TO_CART,
             payload: {
