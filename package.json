@@ -16,7 +16,6 @@
     "chart.js": "^3.5.1",
     "core-js": "^3.27.2",
     "country-state-city": "^3.0.1",
-    "overlay-navbar": "1.0.4",
     "react": "17.0.2",
     "react-alert": "^7.0.3",
     "react-alert-template-basic": "^1.0.2",
@@ -34,7 +33,16 @@
     "redux-devtools-extension": "^2.13.9",
     "redux-thunk": "^2.3.0",
     "web-vitals": "1.1.2",
-    "webfontloader": "^1.6.28"
+    "webfontloader": "^1.6.28",
+    "@babel/polyfill": "^7.12.1",
+    "@babel/preset-react": "^7.14.5",
+    "cross-env": "^7.0.3",
+    "rimraf": "^3.0.2"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.14.8",
+    "@babel/core": "^7.14.8",
+    "@babel/preset-env": "^7.14.8"
   },
   "scripts": {
     "start": "react-scripts --max_old_space_size=8192 start",
