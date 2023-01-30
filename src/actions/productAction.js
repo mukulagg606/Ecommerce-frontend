@@ -20,8 +20,9 @@ export const getProduct = (keyword="",currentPage=1,price=[0, 25000], category, 
         }
 
         const config = {
+            headers:{
             'Access-Control-Allow-Origin': '*',
-
+            "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS"}
         };
 
         const {data} = await axios.get(link,config);
