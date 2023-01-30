@@ -13,6 +13,7 @@ export const createOrder = (order) => async(dispatch) =>{
 
         const config = {
             headers : {
+                'Access-Control-Allow-Origin': '*',
                 "Content-Type": "application/json",
             },
         };
@@ -68,6 +69,7 @@ export const updateOrder = (id, order) => async(dispatch) =>{
 
         const config = {
             headers : {
+                'Access-Control-Allow-Origin': '*',
                 "Content-Type": "application/json",
             },
         };
