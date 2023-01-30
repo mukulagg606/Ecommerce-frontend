@@ -57,7 +57,7 @@ export const loadUser = ()=> async(dispatch)=>{
     try {
         dispatch({type: LOAD_USER_REQUEST});
 
-        const {data} = await axios.get(`/api/v1/me`);
+        const {data} = await axios.get(`http://ec2-54-95-192-155.ap-northeast-1.compute.amazonaws.com:4000/api/v1/me`);
 
         dispatch({type: LOAD_USER_SUCCESS,payload: data.user});
 
