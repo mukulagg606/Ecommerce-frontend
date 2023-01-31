@@ -43,7 +43,14 @@ export const getProductDetails = (id)=> async(dispatch)=>{
     try {
         dispatch({type: PRODUCT_DETAILS_REQUEST});
 
-        const {data} = await axios.get(`https://nice-jade-coyote-wear.cyclic.app/api/v1/product/${id}`);
+        const config = {
+            headers:{
+            'Access-Control-Allow-Origin': '*',
+            "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS"}
+        };
+
+
+        const {data} = await axios.get(`https://nice-jade-coyote-wear.cyclic.app/api/v1/product/${id}`,config);
         dispatch({
             type: PRODUCT_DETAILS_SUCCESS,
             payload:data.product,
@@ -63,8 +70,9 @@ export const createProduct = (productData)=> async(dispatch)=>{
         dispatch({type: NEW_PRODUCT_REQUEST});
 
         const config = {
-            'Access-Control-Allow-Origin': '*',
-            headers : {"Content-Type": "application/json"},
+            headers : {
+                'Access-Control-Allow-Origin': '*',
+                "Content-Type": "application/json"},
         };
 
         const {data} = await axios.post(`https://nice-jade-coyote-wear.cyclic.app/api/v1/admin/products/new`, productData, config);
@@ -86,8 +94,9 @@ export const updateProduct = (id, productData)=> async(dispatch)=>{
         dispatch({type: UPDATE_PRODUCT_REQUEST});
 
         const config = {
-            'Access-Control-Allow-Origin': '*',
-            headers : {"Content-Type": "application/json"},
+            headers : {
+                'Access-Control-Allow-Origin': '*',
+                "Content-Type": "application/json"},
         };
 
         const {data} = await axios.put(`https://nice-jade-coyote-wear.cyclic.app/api/v1/admin/product/${id}`, productData, config);
@@ -108,7 +117,13 @@ export const getAdminProduct = ()=> async(dispatch)=>{
     try {
         dispatch({type: ADMIN_PRODUCT_REQUEST});
 
-        const {data} = await axios.get(`https://nice-jade-coyote-wear.cyclic.app/api/v1/admin/products`);
+        const config = {
+            headers:{
+            'Access-Control-Allow-Origin': '*',
+            "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS"}
+        };
+
+        const {data} = await axios.get(`https://nice-jade-coyote-wear.cyclic.app/api/v1/admin/products`,config);
         dispatch({
             type: ADMIN_PRODUCT_SUCCESS,
             payload:data.products,
@@ -126,7 +141,13 @@ export const deleteProduct = (id)=> async(dispatch)=>{
     try {
         dispatch({type: DELETE_PRODUCT_REQUEST});
 
-        const {data} = await axios.delete(`https://nice-jade-coyote-wear.cyclic.app/api/v1/admin/product/${id}`);
+        const config = {
+            headers:{
+            'Access-Control-Allow-Origin': '*',
+            "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS"}
+        };
+
+        const {data} = await axios.delete(`https://nice-jade-coyote-wear.cyclic.app/api/v1/admin/product/${id}`,config);
         dispatch({
             type: DELETE_PRODUCT_SUCCESS,
             payload:data.success,
@@ -145,8 +166,9 @@ export const newReview = (reviewData)=> async(dispatch)=>{
         dispatch({type: NEW_REVIEW_REQUEST});
 
         const config = {
-            'Access-Control-Allow-Origin': '*',
-            headers : {"Content-Type": "application/json"},
+            headers : {
+                'Access-Control-Allow-Origin': '*',
+                "Content-Type": "application/json"},
         };
 
         const {data} = await axios.put(`https://nice-jade-coyote-wear.cyclic.app/api/v1/review`, reviewData, config);
@@ -167,7 +189,13 @@ export const getAllReviews = (id)=> async(dispatch)=>{
     try {
         dispatch({type: ALL_REVIEW_REQUEST});
 
-        const {data} = await axios.get(`https://nice-jade-coyote-wear.cyclic.app/api/v1/reviews?id=${id}`);
+        const config = {
+            headers:{
+            'Access-Control-Allow-Origin': '*',
+            "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS"}
+        };
+
+        const {data} = await axios.get(`https://nice-jade-coyote-wear.cyclic.app/api/v1/reviews?id=${id}`,config);
         dispatch({
             type: ALL_REVIEW_SUCCESS,
             payload:data.reviews,
@@ -185,7 +213,13 @@ export const deleteReviews = (reviewId, productId)=> async(dispatch)=>{
     try {
         dispatch({type:DELETE_REVIEW_REQUEST});
 
-        const {data} = await axios.delete(`https://nice-jade-coyote-wear.cyclic.app/api/v1/reviews?id=${reviewId}&productId=${productId}`);
+        const config = {
+            headers:{
+            'Access-Control-Allow-Origin': '*',
+            "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS"}
+        };
+
+        const {data} = await axios.delete(`https://nice-jade-coyote-wear.cyclic.app/api/v1/reviews?id=${reviewId}&productId=${productId}`,config);
         dispatch({
             type:DELETE_REVIEW_SUCCESS,
             payload:data.success,

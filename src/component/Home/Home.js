@@ -26,14 +26,14 @@ const Home = () => {
   return (
    <>
     {loading ? <Loader/> :  <>
-    <MetaData title="ECOMMERCE" />
+    <MetaData title="Shop Studio" />
         <div className='banner'>
-            <p>WELCOME TO ECOMMERCE</p>
-            <h1>Find Amazing Products Below</h1>
+            <p>WELCOME TO SHOP STUDIO</p>
+            <h1>Selling only the best things online</h1>
 
             <a href="#container">
                 <button>
-                Scroll <CgMouse />
+                Explore <CgMouse />
                 </button>
             </a>
         </div>

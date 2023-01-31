@@ -12,11 +12,11 @@
   .banner > h1 {
     margin: 5vmax;
   
-    font: 600 2.5vmax "Roboto";
+    font: 300 1.9vmax "Fira Sans";
   }
   
   .banner > p {
-    font: 300 1.4vmax "Lucida Sans";
+    font: 600 2.5vmax "Lucida Handwriting";
   }
   
   .banner > a > button {
