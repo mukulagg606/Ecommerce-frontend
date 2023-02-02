@@ -1,11 +1,12 @@
 import {ADD_TO_CART, REMOVE_CART_ITEM, SAVE_SHIPPING_INFO} from "../constants/cartConstants";
 import axios from "axios";
+import { BASE_URL } from "../constants/globalConstant";
 
 //Add To Cart
 export const addItemsToCart = (id, quantity)=> async(dispatch, getState)=>{
     
          const {data} = await axios.get(
-            `https://nice-jade-coyote-wear.cyclic.app/api/v1/product/${id}`);
+            BASE_URL+`/product/${id}`);
 
         dispatch({type: ADD_TO_CART,
             payload: {

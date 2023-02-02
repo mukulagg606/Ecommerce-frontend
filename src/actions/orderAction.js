@@ -5,6 +5,7 @@ import {CREATE_ORDER_REQUEST, CREATE_ORDER_SUCCESS,CREATE_ORDER_FAIL, CLEAR_ERRO
     UPDATE_ORDER_REQUEST, UPDATE_ORDER_SUCCESS, UPDATE_ORDER_FAIL,
     DELETE_ORDER_REQUEST, DELETE_ORDER_SUCCESS, DELETE_ORDER_FAIL} from "../constants/orderConstants"
 import axios from "axios";
+import { BASE_URL } from "../constants/globalConstant";
 
 //Create Order
 export const createOrder = (order) => async(dispatch) =>{
@@ -17,7 +18,7 @@ export const createOrder = (order) => async(dispatch) =>{
                 "Content-Type": "application/json",
             },
         };
-        const {data} = await axios.post("https://nice-jade-coyote-wear.cyclic.app/api/v1/order/new",order,config);
+        const {data} = await axios.post(BASE_URL+"/order/new",order,config);
         dispatch({type: CREATE_ORDER_SUCCESS, payload: data});
 
     }catch (error) {
@@ -39,13 +40,13 @@ export const myOrders = () => async(dispatch) =>{
             "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS"}
         };
 
-        const {data} = await axios.get("https://nice-jade-coyote-wear.cyclic.app/api/v1/orders/me",config);
+        const {data} = await axios.get(BASE_URL+"/orders/me",config);
         dispatch({type: MY_ORDERS_SUCCESS, payload: data.orders});
 
     }catch (error) {
         dispatch({
             type: MY_ORDERS_FAIL,
-            payload: error.resonse.data.message,
+            payload: error.response.data.message,
         });
     }
 };
@@ -61,7 +62,7 @@ export const getAllOrders = () => async(dispatch) =>{
             "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS"}
         };
 
-        const {data} = await axios.get("https://nice-jade-coyote-wear.cyclic.app/api/v1/admin/orders",config);
+        const {data} = await axios.get(BASE_URL+"/admin/orders",config);
         dispatch({type: ALL_ORDERS_SUCCESS, payload: data.orders});
 
     }catch (error) {
@@ -83,7 +84,7 @@ export const updateOrder = (id, order) => async(dispatch) =>{
                 "Content-Type": "application/json",
             },
         };
-        const {data} = await axios.put(`https://nice-jade-coyote-wear.cyclic.app/api/v1/admin/order/${id}`,order,config);
+        const {data} = await axios.put(BASE_URL+`/admin/order/${id}`,order,config);
         dispatch({type: UPDATE_ORDER_SUCCESS, payload: data.success});
 
     }catch (error) {
@@ -105,7 +106,7 @@ export const deleteOrder = (id) => async(dispatch) =>{
             "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS"}
         };
 
-        const {data} = await axios.delete(`https://nice-jade-coyote-wear.cyclic.app/api/v1/admin/order/${id}`,config);
+        const {data} = await axios.delete(BASE_URL+`/admin/order/${id}`,config);
         dispatch({type: DELETE_ORDER_SUCCESS, payload: data.success});
 
     }catch (error) {
@@ -127,7 +128,7 @@ export const getOrderDetails = (id) => async(dispatch) =>{
             "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS"}
         };
 
-        const {data} = await axios.get(`https://nice-jade-coyote-wear.cyclic.app/api/v1/order/${id}`,config);
+        const {data} = await axios.get(BASE_URL+`/order/${id}`,config);
         dispatch({type: ORDER_DETAILS_SUCCESS, payload: data.order});
 
     }catch (error) {

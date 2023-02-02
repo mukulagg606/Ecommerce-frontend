@@ -10,6 +10,7 @@ import {LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAIL, CLEAR_ERRORS,
     UPDATE_USER_REQUEST, UPDATE_USER_SUCCESS, UPDATE_USER_FAIL,
     DELETE_USER_REQUEST, DELETE_USER_SUCCESS, DELETE_USER_FAIL} from "../constants/userConstants"
 import axios from "axios";
+import { BASE_URL } from "../constants/globalConstant";
 
 //LOGIN
 export const login = (email,password)=> async(dispatch)=>{
@@ -19,11 +20,12 @@ export const login = (email,password)=> async(dispatch)=>{
         const config = {
             headers:{
                 'Access-Control-Allow-Origin': '*',
+                "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
                 "Content-Type":"application/json"}
         }
 
         const {data} = await axios.post(
-            `https://nice-jade-coyote-wear.cyclic.app/api/v1/login`,
+            BASE_URL+"/login",
             {email,password},
             config
         );
@@ -46,7 +48,7 @@ try {
             'Access-Control-Allow-Origin': '*',
             "Content-Type": "multipart/form-data"}};
     
-    const {data} = await axios.post("https://nice-jade-coyote-wear.cyclic.app/api/v1/register", userData, config);
+    const {data} = await axios.post(BASE_URL+"/register", userData, config);
     
     dispatch({type: REGISTER_USER_SUCCESS, payload: data.user})
 
@@ -68,7 +70,7 @@ export const loadUser = ()=> async(dispatch)=>{
             'Access-Control-Allow-Origin': '*',
         }}
 
-        const {data} = await axios.get(`https://nice-jade-coyote-wear.cyclic.app/api/v1/me`,config);
+        const {data} = await axios.get(BASE_URL+"/me",config);
 
         dispatch({type: LOAD_USER_SUCCESS,payload: data.user});
 
@@ -85,7 +87,7 @@ export const logout = ()=> async(dispatch)=>{
             'Access-Control-Allow-Origin': '*',
         }}
 
-         await axios.get(`https://nice-jade-coyote-wear.cyclic.app/api/v1/logout`,config);
+         await axios.get(BASE_URL+"/logout",config);
 
         dispatch({type: LOGOUT_SUCCESS});
 
@@ -105,7 +107,7 @@ export const updateProfile = (userData)=> async(dispatch)=>{
                 'Access-Control-Allow-Origin': '*',
                 "Content-Type": "multipart/form-data"}};
         
-        const {data} = await axios.put("https://nice-jade-coyote-wear.cyclic.app/api/v1/me/update", userData, config);
+        const {data} = await axios.put(BASE_URL+"/me/update", userData, config);
         
         dispatch({type: UPDATE_PROFILE_SUCCESS, payload: data.success})
     
@@ -128,7 +130,7 @@ export const updatePassword = (passwords)=> async(dispatch)=>{
                 'Access-Control-Allow-Origin': '*',
                 "Content-Type": "application/json"}};
         
-        const {data} = await axios.put("https://nice-jade-coyote-wear.cyclic.app/api/v1/password/update", passwords, config);
+        const {data} = await axios.put(BASE_URL+"/password/update", passwords, config);
         
         dispatch({type: UPDATE_PASSWORD_SUCCESS, payload: data.success})
     
@@ -151,7 +153,7 @@ export const forgotPassword = (email)=> async(dispatch)=>{
                 "Content-Type":"application/json"}}
 
         const {data} = await axios.post(
-            `https://nice-jade-coyote-wear.cyclic.app/api/v1/password/forgot`,
+            BASE_URL+"/password/forgot",
             email,
             config
         );
@@ -175,7 +177,7 @@ export const resetPassword = (token, passwords)=> async(dispatch)=>{
                 "Content-Type":"application/json"}}
 
         const {data} = await axios.put(
-            `https://nice-jade-coyote-wear.cyclic.app/api/v1/password/reset/${token}`,
+            BASE_URL+`/password/reset/${token}`,
             passwords,
             config
         );
@@ -197,7 +199,7 @@ export const getAllUsers = ()=> async(dispatch)=>{
             'Access-Control-Allow-Origin': '*',
         }}
 
-        const {data} = await axios.get(`https://nice-jade-coyote-wear.cyclic.app/api/v1/admin/users`,config);
+        const {data} = await axios.get(BASE_URL+"/admin/users",config);
 
         dispatch({type: ALL_USERS_SUCCESS,payload: data.users});
 
@@ -216,7 +218,7 @@ export const getUserDetails = (id)=> async(dispatch)=>{
             'Access-Control-Allow-Origin': '*',
         }}
 
-        const {data} = await axios.get(`https://nice-jade-coyote-wear.cyclic.app/api/v1/admin/user/${id}`,config);
+        const {data} = await axios.get(BASE_URL+`/admin/user/${id}`,config);
 
         dispatch({type: USER_DETAILS_SUCCESS,payload: data.user});
 
@@ -235,7 +237,7 @@ export const updateUser = (id, userData)=> async(dispatch)=>{
             'Access-Control-Allow-Origin': '*',
             headers :{"Content-Type": "application/json"}};
         
-        const {data} = await axios.put(`https://nice-jade-coyote-wear.cyclic.app/api/v1/admin/user/${id}`, userData, config);
+        const {data} = await axios.put(BASE_URL+`/admin/user/${id}`, userData, config);
         
         dispatch({type: UPDATE_USER_SUCCESS, payload: data.success})
     
@@ -256,7 +258,7 @@ export const deleteUser = (id)=> async(dispatch)=>{
             'Access-Control-Allow-Origin': '*',
         }}
 
-        const {data} = await axios.delete(`https://nice-jade-coyote-wear.cyclic.app/api/v1/admin/user/${id}`,config);
+        const {data} = await axios.delete(BASE_URL+`/admin/user/${id}`,config);
         
         dispatch({type: DELETE_USER_SUCCESS, payload: data})
     

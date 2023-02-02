@@ -41,6 +41,7 @@ import ProductReviews from "./component/Admin/ProductReviews.js";
 import Contact from "./component/layout/Contact/Contact";
 import About from "./component/layout/About/About";
 import NotFound from "./component/layout/NotFound/NotFound";
+import { BASE_URL } from './constants/globalConstant';
 
 function App() {
 
@@ -49,7 +50,7 @@ function App() {
   const [stripeApiKey, setStripeApiKey] = useState("");
 
   async function getStripeApiKey() {
-    const { data } = await axios.get("https://nice-jade-coyote-wear.cyclic.app/api/v1/stripeapikey");
+    const { data } = await axios.get(BASE_URL+"/stripeapikey");
     
     setStripeApiKey(data.stripeApiKey);
   };
